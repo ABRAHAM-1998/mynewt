@@ -1,0 +1,37 @@
+.centerimg {
+  background-color: #673ab7;
+  height: 150px;
+ 
+  }
+  .span1{
+    position: fixed;
+    right: 30px; 
+    color: gray;
+
+  }
+  .span2{
+    margin-left: 20px;
+
+  }
+  .image {
+    background-size: cover;
+    border-radius: 50%;;
+    width: 100px;
+    height: 100px;
+    margin-left: 20%;
+    margin-top: 20px;
+
+  }
+  h4{
+    -webkit-box-shadow: 0 10px 10px -5px #000000;
+    -moz-box-shadow: 0 10px 10px -5px #000000;
+    box-shadow: 0 10px 10px -5px #000000;
+    text-align:center;  
+    color:#673ab7;
+    font-weight:bolder;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .toolbar-content{
+    justify-content: right;
+  }
+  
