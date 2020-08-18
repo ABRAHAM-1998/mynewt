@@ -16,7 +16,7 @@ export class FriendsComponent implements OnInit {
 
   ngOnInit(): void { this.fn_list();
   }
-
+  public loading = false;
   public options: string[];
   public friends: any = {
     search: ''
@@ -45,6 +45,9 @@ export class FriendsComponent implements OnInit {
   fn_list() {
     this.api.methPOst('friends',this.options).subscribe((res) => {
       this.friendlist = res['data']
+      if(res['data']){
+        this.loading =true;
+      }
       // console.log(this.friendlist)
 
     })

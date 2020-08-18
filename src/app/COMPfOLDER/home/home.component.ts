@@ -13,14 +13,17 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getPost();
   }
+  public loading = false;
+
   public data: any = [];
   public postdetails = [];
   getPost() {
     let data = {
     }
     this.api.methPOst('getposts', data).subscribe((res) => {
-      // console.log(res);
+      console.log(res);
       this.data = res['data'];
+      this.loading = res['apistatus']
       this.data.forEach(element => {
         // console.log(element.postdetails);
         this.postdetails.push(element.postdetails)

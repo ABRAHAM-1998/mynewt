@@ -1,10 +1,10 @@
-<mat-grid-list cols="2" [cols]="breakpoint" (window:resize)="onResize($event)">
+<mat-grid-list cols="2" [cols]="breakpoint" (window:resize)="onResize($event)" style="margin-bottom: 40px;">
   <mat-grid-tile>
 
     <mat-card class="card1">
       <mat-card-header>
         <div mat-card-avatar class="image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-title>Create Post</mat-card-title>
         <mat-card-subtitle>{{todayDate | date:'medium'}}</mat-card-subtitle>
       </mat-card-header>
 
@@ -44,7 +44,6 @@
   <mat-grid-tile>
 
     <mat-card>
-      <img mat-card-lg-image class="mat-card-lg-image" [src]="croppedImage" />
 
       <image-cropper mat-card-lg-image [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
         [resizeToWidth]="256" [aspectRatio]="3/4" format="png" (imageCropped)="imageCropped($event)"
@@ -55,5 +54,8 @@
       </image-cropper>
 
     </mat-card>
+    <img *ngIf="hidden == true"  mat-card-lg-image class="mat-card-lg-image" [src]="croppedImage" />
+
   </mat-grid-tile>
 </mat-grid-list>
+<app-profile *ngIf="loading == false"></app-profile>

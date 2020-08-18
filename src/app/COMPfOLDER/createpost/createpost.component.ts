@@ -12,11 +12,12 @@ import { Router } from '@angular/router';
 })
 export class CreatepostComponent implements OnInit {
 
-  constructor(private api:ApiserviceService,
-    private route:Router
+  constructor(private api: ApiserviceService,
+    private route: Router
   ) { }
 
   breakpoint: number;
+
 
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 600) ? 1 : 2;
@@ -26,15 +27,17 @@ export class CreatepostComponent implements OnInit {
     this.breakpoint = (event.target.innerWidth <= 600) ? 1 : 2;
   }
 
-  public imagecrop = false;
+  public hidden = false;
   public loading = true;
   imageChangedEvent: any = '';
   croppedImage: any = '';
-  todayDate : Date = new Date();
+  todayDate: Date = new Date();
 
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
+    this.hidden = true;
+
   }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
@@ -53,14 +56,16 @@ export class CreatepostComponent implements OnInit {
     location: '',
     Description: '',
     image: '',
-    date : this.todayDate,
-    id:localStorage.getItem('id')
+    date: this.todayDate,
+    id: localStorage.getItem('id')
   }
-  fnPst(){
-
-    this.api.methPOst('newpost',this.post).subscribe((res)=>{
+  fnPst() {
+    this.loading = false;
+    this.api.methPOst('newpost', this.post).subscribe((res) => {
       console.log(res)
-      if(res['apistatus']== true){
+      if (res['apistatus'] == true) {
+        this.loading = true;
+
         this.route.navigate(['mainui'])
       }
     })

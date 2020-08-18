@@ -15,6 +15,7 @@ export class UserprofileComponent implements OnInit {
   constructor(private api: ApiserviceService) { }
   isHidden: boolean = true;
   isHiddenb: boolean = false;
+  public loading = false;
 
 
   ngOnInit(): void {
@@ -48,11 +49,11 @@ export class UserprofileComponent implements OnInit {
       id: localStorage.getItem('id')
     }
 
-    this.api.methPOst('upload',data).subscribe((body) => {
+    this.api.methPOst('upload', data).subscribe((body) => {
       console.log(body)
       if (body) {
         this.fnshowpost()
-        
+
       } else {
         console.log('err on recivibresponse')
       }
@@ -67,20 +68,23 @@ export class UserprofileComponent implements OnInit {
   public userpost: any = [];
   public userdata: any = [];
   fnshowpost() {
-    console.log(this.fromParent)
-    this.api.methPOst('userpost', {'id':this.fromParent}).subscribe((res) => {
-      // console.log(r)
+    this.api.methPOst('userpost', { 'id': this.fromParent }).subscribe((res) => {
+      console.log(res)
+      if (res['data']) {
+        this.loading = true;
+
+      }
       this.userpost = res['data']['post'];
       this.userdata = res['data']['usrdata'];
       this.userdata.forEach(element => {
-        if(element._id === localStorage.getItem('id')){
+        if (element._id === localStorage.getItem('id')) {
           this.isHidden = false;
           this.isHiddenb = true;
-
-        }else{
+        } else {
           console.log('not user ')
         }
-        
+
+
       });
 
 
@@ -88,14 +92,15 @@ export class UserprofileComponent implements OnInit {
 
   }
   fn_delete(deleteid) {
-    console.log(deleteid.key);
-    this.api.methPOst('postdelete',{key:deleteid._id}).subscribe((res)=>{
-      if(res['apistatus'] = true){
+    this.loading = false;
+
+    this.api.methPOst('postdelete', { key: deleteid._id }).subscribe((res) => {
+      if (res['apistatus'] = true) {
         this.fnshowpost();
-      }else{
+      } else {
         console.log('DELETION POST FAILED')
       }
     })
   }
 
-  }
+}

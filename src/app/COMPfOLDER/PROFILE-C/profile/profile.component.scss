@@ -1,52 +1,39 @@
-.circles {
-    display: flex; 
-    justify-content: center;
-    div {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      margin: 5px;
-      -webkit-animation: colorChange .6s linear infinite;  /* Safari 4.0 - 8.0 */
-      animation: colorChange .6s linear infinite; // cubic-bezier(0, 0.5, 0.5, 1)
-      &:nth-child(2) {
-        animation-delay: .05s;
-      }
-      &:nth-child(3) {
-        animation-delay: .1s;
-      }
-      &:nth-child(4) {
-        animation-delay: .15s;
-      }
-      &:nth-child(5) {
-        animation-delay: .2s;
-      }
-      &:nth-child(6) {
-        animation-delay: .25s;
-      }
-      &:nth-child(7) {
-        animation-delay: .3s;
-      }
-      &:nth-child(8) {
-        animation-delay: .35s;
-      }
-    }
+
+#spinner {
+	-webkit-animation: frames 1s infinite linear;
+	animation: frames 1s infinite linear;
+	background: transparent;
+	border: 2vw solid #FFF;
+	border-radius: 100%;
+	border-top-color: #673ab7;
+	width: 20vw;
+	height: 20vw;
+	opacity: .6;
+	padding: 0;
+	position: absolute;
+	z-index: 999;
+}
+@keyframes frames {
+  0% {
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
   }
-  
-  .primary {
-    background-color: #770400;
+  100% {
+	-webkit-transform: rotate(359deg);
+	transform: rotate(359deg);
   }
-  
-  .alternate {
-    background-color: black;
-  }
-  
-  /* Safari 4.0 - 8.0 */
-  @-webkit-keyframes colorChange {
-      // from {background-color: #770400;}
-      to {background-color: transparent;}
-  }
-  
-  @keyframes colorChange {
-      // from {background-color: #770400;}
-      to {background-color: transparent;}
-  }
+}
+
+#pause {
+	display: block;
+	background:
+		rgba(0, 0, 0, 0.66)
+		no-repeat
+		0 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+}

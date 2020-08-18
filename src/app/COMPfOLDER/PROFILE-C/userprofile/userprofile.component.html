@@ -1,3 +1,13 @@
+<div *ngIf="loading == false" class="circles">
+    <div class="primary"></div>
+    <div class="primary"></div>
+    <div class="primary"></div>
+    <div class="primary"></div>
+    <div class="alternate"></div>
+    <div class="alternate"></div>
+    <div class="alternate"></div>
+    <div class="alternate"></div>
+</div>
 <div layout-gt-sm="column">
     <mat-card style="background-color: #673ab7;" flex-gt-sm *ngFor="let item of userdata">
         <div layout-gt-xs="row">
@@ -8,22 +18,15 @@
                     <mat-card-subtitle>{{item.email}}</mat-card-subtitle>
                     <mat-card-subtitle>{{item.mobile}}</mat-card-subtitle>
                     <!-- <mat-card-subtitle>{{item.}}</mat-card-subtitle>    -->
-
-
                     <img mat-card-lg-image class="image" src="{{item.imgurl}}">
-                    <!-- <img mat-card-lg-image [src]="transform()"> -->
-
-
-
-
 
                 </mat-card-title-group>
             </mat-card>
         </div>
         <mat-divider></mat-divider>
         <mat-card-actions>
-            <button mat-button color="warn" class="text-upper" (click)="uploadFiles()">Update</button>
-			<button mat-button class="text-upper" (click)="uploader.click()">select image</button>
+            <button *ngIf="!isHidden" mat-button color="warn" class="text-upper" (click)="uploadFiles()">Update</button>
+            <button *ngIf="!isHidden" mat-button class="text-upper" (click)="uploader.click()">select image</button>
             <input #uploader hidden type="file" (change)="fileChangeEvent($event)" />
             <button *ngIf="!isHiddenb" mat-button color="warn" class="text-upper">BLOCK</button>
             <button *ngIf="!isHiddenb" mat-button class="text-upper">Messasge</button>
@@ -33,22 +36,22 @@
 
     <mat-grid-list cols="2" *ngIf="imagecrop == true">
         <mat-grid-tile>
-      
-          <mat-card>
-            <img mat-card-lg-image class="mat-card-lg-image" [src]="croppedImage" />
-      
-            <image-cropper mat-card-lg-image [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
-              [resizeToWidth]="256" [aspectRatio]="1/1" format="png" (imageCropped)="imageCropped($event)"
-              (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
-      
-              <input #uploader hidden type="file" (change)="fileChangeEvent($event)" />
-      
-            </image-cropper>
-      
-          </mat-card>
+
+            <mat-card>
+                <img mat-card-lg-image class="mat-card-lg-image" [src]="croppedImage" />
+
+                <image-cropper mat-card-lg-image [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                    [resizeToWidth]="256" [aspectRatio]="1/1" format="png" (imageCropped)="imageCropped($event)"
+                    (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+
+                    <input #uploader hidden type="file" (change)="fileChangeEvent($event)" />
+
+                </image-cropper>
+
+            </mat-card>
         </mat-grid-tile>
-      </mat-grid-list>
-    
+    </mat-grid-list>
+
     <mat-card flex-gt-sm>
         <!-- <img mat-card-lg-image [src]="item.image"> -->
 
@@ -56,11 +59,11 @@
 
         <mat-grid-list cols="3">
             <mat-grid-tile *ngFor="let item of userpost">
-                <div>
-                    <img mat-card-lg-image src="{{item.image}}">
+                <mat-icon *ngIf="!isHidden" (click)="fn_delete(item)">delete</mat-icon>
+                <img mat-card-lg-image src="{{item.image}}">
 
-                    <button mat-button color="warn" class="text-upper" *ngIf="!isHidden" (click)="fn_delete(item)">delete</button>
-                </div>
+                <!-- <button mat-button color="warn" class="text-upper" >delete</button> -->
+
 
             </mat-grid-tile>
         </mat-grid-list>
