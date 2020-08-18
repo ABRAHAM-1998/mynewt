@@ -34,6 +34,8 @@
         <button mat-button (click)="fnPst()" type="submit">save</button>
         <button mat-button>discard</button>
         <button mat-button class="text-upper" (click)="uploader.click()">select image</button>
+        <input #uploader hidden type="file" (change)="fileChangeEvent($event)" />
+
 
       </mat-card-actions>
     </mat-card>
@@ -41,15 +43,14 @@
 
 
 
-  <mat-grid-tile>
+  <mat-grid-tile *ngIf="hidden == true">
 
-    <mat-card>
+    <mat-card *ngIf="hidden == true">
 
       <image-cropper mat-card-lg-image [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
         [resizeToWidth]="256" [aspectRatio]="3/4" format="png" (imageCropped)="imageCropped($event)"
         (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
 
-        <input #uploader hidden type="file" (change)="fileChangeEvent($event)" />
 
       </image-cropper>
 
