@@ -38,6 +38,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { FriendsComponent } from './COMPfOLDER/friends/friends.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { UserprofileComponent } from './COMPfOLDER/PROFILE-C/userprofile/userprofile.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import {  UserService, AlwaysAuthGuard, AlwaysAuthChildrenGuard, OnlyLoggedInUsersGuard, } from './SHARED/authgurd.service';
 // import { AuthGuardService } from "module";
@@ -81,6 +82,7 @@ import {  UserService, AlwaysAuthGuard, AlwaysAuthChildrenGuard, OnlyLoggedInUse
     MatButtonModule,
     CommonModule,
     MatAutocompleteModule,
+    MatTabsModule,
 
     
 

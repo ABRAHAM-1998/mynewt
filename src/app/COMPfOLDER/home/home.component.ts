@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
     let data = {
     }
     this.api.methPOst('getposts', data).subscribe((res) => {
-      console.log(res);
       this.data = res['data'];
       this.loading = res['apistatus']
       this.data.forEach(element => {
