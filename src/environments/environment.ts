@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiUrl :  'http://twenty-two.herokuapp.com/api',
-  apiUrl :  'http://localhost:4201/api',
+  apiUrl :  'http://twenty-two.herokuapp.com/api',
+  // apiUrl :  'http://localhost:4201/api',
 
 };
 
