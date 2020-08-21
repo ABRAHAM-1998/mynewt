@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
 <mat-sidenav-container fullscreen>
 	<mat-sidenav #sidenav mode="side" class="app-sidenav">
 		<div class="centerimg">
@@ -40,16 +41,16 @@
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content>
-		<mat-toolbar color="primary" class="mat-elevation-z3" style="position: fixed;width: 100%;display: flex;z-index: 200;">
+		<mat-toolbar color="primary" class="mat-elevation-z3" style="position: fixed;width: 100%;height:36px;display: flex;z-index: 200;">
 			<button mat-icon-button (click)="sidenav.toggle()">
 
 				<mat-icon>menu</mat-icon>
 			</button>
-			<h3>TWENTY TWO</h3>
+			<h3 style="font-family: 'Freckle Face', cursive;">TWENTY TWO</h3>
 
 
 			<div class="toolbar-content">
-				<mat-icon matListIcon class="span2">settings</mat-icon>
+				<mat-icon matListIcon class="span2">mark_chat_read</mat-icon>
 				<mat-icon matlistIcon class="span2"> notifications</mat-icon>
 			</div>
 
@@ -59,5 +60,20 @@
 		<div class="app-content mt-5">
 			<router-outlet name="auxialry"></router-outlet>
 		</div>
+
+		<div id="bottom-bar" >
+			<i class="material-icons" [routerLink]="[{ outlets: { 'auxialry': 'home' } }]">
+				dynamic_feed
+			</i>
+			<i class="material-icons" [routerLink]="[{ outlets: { 'auxialry': 'createpost' } }]">
+				add_a_photo
+			</i>
+			<i class="material-icons"  [routerLink]="[{ outlets: { 'auxialry': 'friends' } }]">
+				group_add
+			</i>
+			<i class="material-icons"  [routerLink]="[{ outlets: { 'auxialry': 'profile' } }]">
+				person_pin
+			</i>
+		  </div>
 	</mat-sidenav-content>
 </mat-sidenav-container>

@@ -22,7 +22,7 @@ const routes: Routes = [
 
     {path:'',component:HomeComponent,outlet:'auxialry',canActivate:[OnlyLoggedInUsersGuard]},
     {path:'home',component:HomeComponent,outlet:'auxialry',canActivate:[OnlyLoggedInUsersGuard]},
-    {path:'profile',component:UserprofileComponent,outlet:'auxialry',canActivate:[AlwaysAuthChildrenGuard]},
+    {path:'profile',component:UserprofileComponent,outlet:'auxialry',canActivate:[OnlyLoggedInUsersGuard]},
     { path:'createpost', component:CreatepostComponent,outlet:'auxialry',canActivate:[OnlyLoggedInUsersGuard]},
     {path:'friends' ,component:FriendsComponent,canActivate:[OnlyLoggedInUsersGuard],canActivateChild:[AlwaysAuthChildrenGuard],outlet:'auxialry'}
 

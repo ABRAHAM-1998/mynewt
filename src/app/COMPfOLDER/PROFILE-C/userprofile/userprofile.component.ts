@@ -68,7 +68,7 @@ export class UserprofileComponent implements OnInit {
   public userpost: any = [];
   public userdata: any = [];
   fnshowpost() {
-    this.api.methPOst('userpost', { 'id': this.fromParent }).subscribe((res) => {
+    this.api.methPOst('userpost', { 'id': this.fromParent || localStorage.getItem('id') }).subscribe((res) => {
       console.log(res)
       if (res['data']) {
         this.loading = true;

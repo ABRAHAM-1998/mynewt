@@ -21,7 +21,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fn_UserProfile();
     this.data.currentMessage.subscribe(message => console.log(message,'dtata transfer'))
   }
   public imagecrop = false;

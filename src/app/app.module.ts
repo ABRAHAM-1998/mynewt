@@ -39,9 +39,15 @@ import { FriendsComponent } from './COMPfOLDER/friends/friends.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { UserprofileComponent } from './COMPfOLDER/PROFILE-C/userprofile/userprofile.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import {CdkScrollableModule} from '@angular/cdk/scrolling';
+import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import {  UserService, AlwaysAuthGuard, AlwaysAuthChildrenGuard, OnlyLoggedInUsersGuard, } from './SHARED/authgurd.service';
 // import { AuthGuardService } from "module";
+
 
 
 
@@ -90,11 +96,14 @@ import {  UserService, AlwaysAuthGuard, AlwaysAuthChildrenGuard, OnlyLoggedInUse
     BrowserAnimationsModule,
     ImageCropperModule,
     MatGridListModule,
-    
+    MatExpansionModule,
     
 
 
     NgbModule,
+    CdkScrollableModule,
+      ScrollingModule,
+    InfiniteScrollModule,
  
   ],
   providers: [
